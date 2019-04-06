@@ -1,0 +1,77 @@
+# Начало работы
+Для работы Docker в ОС Windows необходимо скачать приложение нажав кнопку ниже
+
+[![N|Solid](http://joxi.ru/eAOEkg5H4v3kYm.jpg)](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)
+
+Либо перейти по ссылке на оффициальный сайт https://store.docker.com/editions/community/docker-ce-desktop-windows и нажать "Get Docker"
+
+[![N|Solid](http://joxi.ru/DmBg637iNq7Rw2.jpg)](http://joxi.ru/DmBg637iNq7Rw2)
+
+после скачивания Запустить установку
+
+[![N|Solid](http://joxi.ru/BA0QgBaUB1vwqr.jpg)](http://joxi.ru/BA0QgBaUB1vwqr2)
+
+Настроить нужные параметры 
+[![N|Solid](http://joxi.ru/1A5LjDRCK4dY92.jpg)](http://joxi.ru/1A5LjDRCK4dY92)
+[![N|Solid](http://joxi.ru/Q2KgO8ji9OK8a2.jpg)](http://joxi.ru/Q2KgO8ji9OK8a2)
+
+# Работа с окружением
+
+В файле docker-compose.yml указываются необходимые параметры, порты, монтируемые папки и тд
+
+[![N|Solid](http://joxi.ru/4AkLdNZCMj0lKr.jpg)](http://joxi.ru/4AkLdNZCMj0lKr)
+
+Для создания контейнейра после перехода в директорию с файлом docker-compose.yml и папкой www
+
+[![N|Solid](http://joxi.ru/xAeyPx8fYMwDqA.jpg)](http://joxi.ru/xAeyPx8fYMwDqA)
+
+Комманда для перехода в папку проекта в командной строке
+```sh
+cd /путь/до/вашего/проекта
+```
+Заметем нужно выполнить команду
+```sh
+docker-compose up -d
+```
+После комманда для входа в новый контейнер и запуска автоматической установки окружения
+```sh
+docker-compose exec bitrix bash --login
+```
+
+После установки окружения нужно переути по адресу http://localhost и восстановить портал из бекапа или установить чистый для тестирования
+
+Для повторных запусков уже существующего контейнера можно использовать команду:
+Комманда для запуска с автоматической установкой окружения
+```sh
+docker-compose start
+```
+
+Для разворота портала из бекапа необходимо положить резервноую в папку www в папке вашего проекта
+затем перейти по http://localhost/ и нажать "Восстановить копию"
+
+[![N|Solid](http://joxi.ru/bmoRaMBiMOKjKr.jpg)](http://joxi.ru/bmoRaMBiMOKjKr)
+
+Нажимаем "Далее"
+[![N|Solid](http://joxi.ru/ZrJB37EC1Qp68r.jpg)](http://joxi.ru/ZrJB37EC1Qp68r)
+Выбираем копию и нажимаем "Далее"
+[![N|Solid](http://joxi.ru/brRg70diQBeM4m.jpg)](http://joxi.ru/brRg70diQBeM4m)
+Дожидаемся установки портала
+[![N|Solid](http://joxi.ru/5md1wXGTvqXPL2.jpg)](http://joxi.ru/5md1wXGTvqXPL2)
+[![N|Solid](http://joxi.ru/bmoRaMBiMOddNr.jpg)](http://joxi.ru/bmoRaMBiMOddNr)
+
+При запуске для уже существующего проекта файл docker-compose.yml должен лежать в папке, где где в корне будет находиться папка www с проектом внутри
+При необходимости настройки монтирования папок можно изменять в парамерt volumes внутри файла docker-compose.yml
+
+Источник https://bitbucket.org/Infoservice_web/bitrix-env7-docker/overview
+
+Дополнительные инструкции :
+
+1) если возникает проблема http://prntscr.com/n8cxok , то запускаем http://prntscr.com/n8cxwv , ищем , какой мудак сидит на нашем порту и мочимм его через диспетчер задач
+
+2) http://prntscr.com/n8cybz - просто делаем рестарт docker desktop http://prntscr.com/n8cyit
+
+3) http://prntscr.com/n8cyzh - docker-compose exec bitrix bash --login запускаем в терминале http://prntscr.com/n8cz21
+
+4) ждём , когда всё закончится http://prntscr.com/n8cz6e
+
+5) открываем http://localhost/bitrixsetup.php

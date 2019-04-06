@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  bitrix:
+    image: infoservice/bitrix-env7-docker:latest
+    ports:
+      - 22:22
+      - 80:80
+      - 3306:3306
+      - 9000:9000
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./www:/home/bitrix/www
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    privileged: true
+    tmpfs:
+      - /run
+      - /run/lock
+    environment:
+      XDEBUG_CONFIG: remote_host=10.0.75.1
